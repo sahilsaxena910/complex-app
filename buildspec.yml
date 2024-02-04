@@ -8,21 +8,18 @@ phases:
     #commands:
       # - command
       # - command
-  #pre_build:
-    #commands:
-      # - command
-      # - command
+  pre_build:
+    commands:
+       - docker build -t sahil91096/dev-client -f Dockerfile.dev ./client
   build:
+    commands:
+      - docker run -e CI=true sahil91096/dev-client npm test
+  post_build:
     commands:
       - docker build -t sahil91096/worker ./worker
       - docker build -t sahil91096/server ./server
       - docker build -t sahil91096/client ./client
       - docker build -t sahil91096/nginx ./nginx
-      # - command
-  #post_build:
-    #commands:
-      # - command
-      # - command
 #reports:
   #report-name-or-arn:
     #files:
