@@ -14,7 +14,10 @@ phases:
       # - command
   build:
     commands:
-      - docker --verion
+      - docker build -t sahil91096/worker ./worker
+      - docker build -t sahil91096/server ./server
+      - docker build -t sahil91096/client ./client
+      - docker build -t sahil91096/nginx ./nginx
       # - command
   #post_build:
     #commands:
