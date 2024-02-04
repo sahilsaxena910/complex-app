@@ -20,6 +20,11 @@ phases:
       - docker build -t sahil91096/server ./server
       - docker build -t sahil91096/client ./client
       - docker build -t sahil91096/nginx ./nginx
+      ##### Fetching credentials from parameter store to login into dockerhub ###
+      - access_token=$(aws ssm get-parameter --name "docker_hub_access_token" --query "Parameter.Value" --output text)
+      - user_name=$(aws ssm get-parameter --name "user_name_docker_hub" --query "Parameter.Value" --output text)
+      ##### Login to docker hub####
+      - echo "$access_token" | docker login -u $user_name --password-stdin
 #reports:
   #report-name-or-arn:
     #files:
