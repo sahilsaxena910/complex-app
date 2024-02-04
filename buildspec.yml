@@ -10,7 +10,7 @@ phases:
       # - command
   pre_build:
     commands:
-       - docker build -t sahil91096/dev-client -f Dockerfile.dev ./client
+       - docker build -t sahil91096/dev-client -f ./client/Dockerfile.dev ./client
   build:
     commands:
       - docker run -e CI=true sahil91096/dev-client npm test
