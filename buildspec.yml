@@ -24,7 +24,9 @@ phases:
       - access_token=$(aws ssm get-parameter --name "docker_hub_access_token" --query "Parameter.Value" --output text)
       - user_name=$(aws ssm get-parameter --name "user_name_docker_hub" --with-decryption --query "Parameter.Value" --output text)
       ##### Login to docker hub####
-      - echo "$access_token" | docker login -u $user_name --password-stdin
+      - echo "$user_name"
+      - echo "$access_token"
+      - echo "$access_token" | docker login -u "$user_name" --password-stdin
       #### Push image to docker hub #####
       - docker push sahil91096/worker
       - docker push sahil91096/server
