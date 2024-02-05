@@ -24,10 +24,10 @@ phases:
       - docker build -t sahil91096/client ./client
       - docker build -t sahil91096/nginx ./nginx
       #### Push image to docker hub #####
-      - docker image push sahil91096/worker
-      - docker image push sahil91096/server
-      - docker image push sahil91096/client
-      - docker image push sahil91096/nginx
+      - docker push sahilsaxena91096/worker
+      - docker push sahilsaxena91096/server
+      - docker push sahilsaxena91096/client
+      - docker push sahilsaxena91096/nginx
 #reports:
   #report-name-or-arn:
     #files:
