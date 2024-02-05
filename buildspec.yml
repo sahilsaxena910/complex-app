@@ -12,7 +12,7 @@ phases:
       - access_token=$(aws ssm get-parameter --name "docker_hub_access_token" --with-decryption --query "Parameter.Value" --output text)
       - user_name=$(aws ssm get-parameter --name "user_name_docker_hub" --query "Parameter.Value" --output text)
       ##### Login to docker hub####
-      - echo "$access_token" | docker login -u "$user_name" --password-stdin
+      -  docker login -u "$user_name" -p "$access_token" docker.io
       - docker build -t sahil91096/dev-client -f ./client/Dockerfile.dev ./client
   build:
     commands:
