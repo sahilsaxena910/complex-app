@@ -9,6 +9,7 @@ phases:
       # - command
   pre_build:
     commands:
+       - docker system prune --all --volumes --force
        - docker build -t sahil91096/dev-client -f ./client/Dockerfile.dev ./client
   build:
     commands:
@@ -23,14 +24,12 @@ phases:
       - access_token=$(aws ssm get-parameter --name "docker_hub_access_token" --with-decryption --query "Parameter.Value" --output text)
       - user_name=$(aws ssm get-parameter --name "user_name_docker_hub" --query "Parameter.Value" --output text)
       ##### Login to docker hub####
-      - echo "$user_name"
-      - echo "$access_token"
       - echo "$access_token" | docker login -u "$user_name" --password-stdin
       #### Push image to docker hub #####
-      - docker push sahil91096/worker
-      - docker push sahil91096/server
-      - docker push sahil91096/client
-      - docker push sahil91096/nginx
+      - docker image push sahil91096/worker
+      - docker image push sahil91096/server
+      - docker image push sahil91096/client
+      - docker image push sahil91096/nginx
 #reports:
   #report-name-or-arn:
     #files:
