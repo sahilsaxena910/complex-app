@@ -9,7 +9,6 @@ phases:
       # - command
   pre_build:
     commands:
-       - docker system prune --all --volumes --force
        - docker build -t sahil91096/dev-client -f ./client/Dockerfile.dev ./client
   build:
     commands:
