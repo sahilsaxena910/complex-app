@@ -13,16 +13,16 @@ phases:
       - user_name=$(aws ssm get-parameter --name "user_name_docker_hub" --query "Parameter.Value" --output text)
       ##### Login to docker hub####
       -  docker login -u "$user_name" -p "$access_token" docker.io
-      - docker build -t sahil91096/dev-client -f ./client/Dockerfile.dev ./client
+      - docker build -t sahilsaxena91096/dev-client -f ./client/Dockerfile.dev ./client
   build:
     commands:
       - docker run -e CI=true sahil91096/dev-client npm test
   post_build:
     commands:
-      - docker build -t sahil91096/worker ./worker
-      - docker build -t sahil91096/server ./server
-      - docker build -t sahil91096/client ./client
-      - docker build -t sahil91096/nginx ./nginx
+      - docker build -t sahilsaxena91096/worker ./worker
+      - docker build -t sahilsaxena91096/server ./server
+      - docker build -t sahilsaxena91096/client ./client
+      - docker build -t sahilsaxena91096/nginx ./nginx
       #### Push image to docker hub #####
       - docker push sahilsaxena91096/worker
       - docker push sahilsaxena91096/server
