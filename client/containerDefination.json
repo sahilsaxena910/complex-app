@@ -1,6 +1,6 @@
 {
     "requiresCompatibilities": [
-        "FARGATE"
+        "EC2"
     ],
     "family": "complex",
     "containerDefinitions": [
