@@ -41,7 +41,7 @@
         }
     ],
     
-    "networkMode": "awsvpc",
+    "networkMode": "bridge",
     "memory": "1 GB",
     "cpu": ".5 vCPU",
     "executionRoleArn": ""
