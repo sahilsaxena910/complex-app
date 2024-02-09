@@ -1,0 +1,18 @@
+services:
+  nginx:
+    image: sahilsaxena91096/nginx
+    ports:
+      - "80:80"
+  api:
+    image: sahilsaxena91096/server
+    env_file:
+        - ./.env-api
+  worker:
+    image: sahilsaxena91096/worker
+    environment:
+      - REDIS_HOST="redis"
+      - REDIS_PORT=6379
+  client:
+    image: sahilsaxena91096/client
+    environment:
+      - WDS_SOCKET_PORT=0
